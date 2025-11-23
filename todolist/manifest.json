@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "TodoList Sidebar",
+  "version": "1.0",
+  "description": "サイドバーに表示するTodoList拡張機能",
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "action": {
+    "default_title": "TodoList Sidebar"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["todo.json"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
