@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "markdown-preview Sidebar",
+  "version": "1.0",
+  "description": "サイドバーに表示するmarkdown-preview用拡張機能",
+  "permissions": [
+    "sidePanel",
+    "storage"
+  ],
+  "action": {
+    "default_title": "markdown-preview Sidebar"
+  },
+  "side_panel": {
+    "default_path": "markdown-preview.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

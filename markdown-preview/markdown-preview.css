@@ -1,0 +1,124 @@
+#preview table {
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+#markdownInput, #resultMarkdown {
+    width: 100%;;
+}
+#preview table,
+#preview table thead,
+#preview table tbody,
+#preview table tr,
+#preview table th,
+#preview table td {
+    border: 1px solid #ddd;
+}
+
+#preview table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+
+#preview table td {
+    padding: 8px 12px;
+}
+
+#preview table.editable td,
+#preview table.editable th {
+    cursor: pointer;
+}
+
+#preview table.editable td.selected,
+#preview table.editable th.selected {
+    background-color: #cfe9ff;
+    border: 2px solid #0056b3;
+}
+
+#preview table.editable td.editing,
+#preview table.editable th.editing {
+    background-color: #fff9e6;
+    outline: 2px solid #ffc107;
+    padding: 6px 10px;
+}
+
+#tableControls {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#tableControls button {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#tableControls button:hover {
+    background-color: #e9ecef;
+    border-color: #999;
+}
+
+#addRowBtn,
+#addColBtn {
+    background-color: #007bff;
+    color: black;
+    border-color: #0056b3;
+}
+
+#addRowBtn:hover,
+#addColBtn:hover {
+    background-color: #0056b3;
+    border-color: #003d82;
+}
+
+#finishEditBtn {
+    background-color: #6c757d;
+    color: black;
+    border-color: #5a6268;
+}
+
+#finishEditBtn:hover {
+    background-color: #5a6268;
+    border-color: #4e555b;
+}
+
+#insertRowBtn,
+#insertColBtn {
+    background-color: #17a2b8;
+    color: black;
+    border-color: #117a8b;
+}
+
+#insertRowBtn:hover,
+#insertColBtn:hover {
+    background-color: #117a8b;
+    border-color: #0c5460;
+}
+
+.clear-btn {
+    padding: 3px 5px;
+    background-color: #dc3545;
+    border: 1px solid #c82333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.note {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>markdown table editer</title>
+    <link rel="stylesheet" href="markdown-preview.css">
+</head>
+<body>
+    <h2>Markdown Table Editer</h2>
+    <div class="note">
+        <span>Markdownのテーブルを編集します。<button id="clearBtn" class="clear-btn">🗑️</button></span>
+    </div>
+    <textarea id="markdownInput" placeholder="ここに編集したいMarkdownテキストを入力してください..." 
+    rows="10" cols="50"></textarea>
+    <h3>プレビュー:</h3>
+    <div id="tableControls" style="display:none; margin-bottom: 10px;">
+        <button id="addRowBtn">行を追加（最後）</button>
+        <button id="insertRowBtn">行を挿入（選択行前）</button>
+        <button id="addColBtn">列を追加（最後）</button>
+        <button id="insertColBtn">列を挿入（選択列前）</button>
+        <button id="finishEditBtn">編集終了</button>
+    </div>
+    <div id="preview"></div>
+    <textarea id="resultMarkdown" placeholder="変更後のテキストエリアが出力されます。" rows="10" cols="50"></textarea>
+    
+    <script src="marked.min.js"></script>
+    <script src="markdown-preview.js"></script>
+</body>
+</html>
