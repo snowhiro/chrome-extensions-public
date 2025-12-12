@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Backlog Markdown Preview",
+  "version": "1.0",
+  "description": "Preview Markdown from Backlog in a sidebar.",
+  "permissions": [
+    "activeTab",
+    "sidePanel"
+  ],
+  "action": {
+    "default_title": "Backlog Markdown Preview を開く"
+  },
+  "side_panel": {
+    "default_path": "sidebar.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.backlog.jp/*"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.html", "sidebar.js", "sidebar.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
