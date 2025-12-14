@@ -5,7 +5,8 @@
   "description": "Preview Markdown from Backlog in a sidebar.",
   "permissions": [
     "activeTab",
-    "sidePanel"
+    "sidePanel",
+    "scripting"
   ],
   "action": {
     "default_title": "Backlog Markdown Preview を開く"
@@ -14,17 +15,12 @@
     "default_path": "sidebar.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "js/background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["*://*.backlog.jp/*"],
-      "js": ["content-script.js"]
-    }
-  ],
+  "host_permissions": ["<all_urls>"],
   "web_accessible_resources": [
     {
-      "resources": ["sidebar.html", "sidebar.js", "sidebar.css"],
+      "resources": ["sidebar.html", "js/sidebar.js", "js/marked.umd.js", "js/sidebar.css"],
       "matches": ["<all_urls>"]
     }
   ]

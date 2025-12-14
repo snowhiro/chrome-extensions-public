@@ -14,14 +14,14 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 // タブが更新されたときにサイドパネルを自動更新
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete' && tab.url.includes('backlog.jp')) {
-    // サイドパネルが開いている場合は通知
-    chrome.runtime.sendMessage({
-      action: 'tabUpdated',
-      tabId: tabId
-    }).catch(() => {
-      // サイドパネルが開いていない場合はエラーを無視
-    });
-  }
-});
+// chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+//   if (changeInfo.status === 'complete' && tab.url.includes('backlog.jp')) {
+//     // サイドパネルが開いている場合は通知
+//     chrome.runtime.sendMessage({
+//       action: 'tabUpdated',
+//       tabId: tabId
+//     }).catch(() => {
+//       // サイドパネルが開いていない場合はエラーを無視
+//     });
+//   }
+// });

@@ -1,9 +1,183 @@
 <html>
-    <body>
-        <h1>サンプル用のhtml</h1>
-        <textarea id="markdown-textarea">
-            # サンプルテキスト
-        </textarea>
-    </body>
+<body>
+<h1>サンプル用のhtml</h1>
+<textarea id="markdown-textarea">
+# GitHub Copilot 組織利用 導入チェックリスト（Organization 作成含む）
+
+本ドキュメントは、**GitHub Organization の新規作成から GitHub Copilot を組織で利用開始するまで**の手順を、
+チェックリスト形式でまとめたものです。
+
+---
+
+## 0. 事前準備
+- [ ] GitHub 個人アカウントを所持している
+- [ ] 組織管理者（Owner）を決定している
+- [ ] 支払い方法（クレジットカード or 請求書）を用意している
+
+---
+
+## 1. GitHub Organization の作成
+
+### 1-1. Organization 作成画面へアクセス
+- [ ] GitHub にログイン
+- [ ] 以下の URL にアクセス
+
+**URL**  
+https://github.com/account/organizations/new
+
+---
+
+### 1-2. Organization 基本情報の入力
+- [ ] Organization 名を入力
+- [ ] 連絡用メールアドレスを設定
+- [ ] プランを選択（Free / Team / Enterprise）
+
+**必要な情報**
+- Organization 名（URL に使用）
+- メールアドレス
+- 利用目的（Internal / Open Source など）
+
+---
+
+### 1-3. Owner（管理者）の確認
+- [ ] 作成者が Organization Owner であることを確認
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/people
+```
+
+---
+
+## 2. Organization 初期設定（推奨）
+
+### 2-1. 基本・セキュリティ設定
+- [ ] Organization Settings を確認
+- [ ] 2FA 必須化（推奨）
+- [ ] メンバー招待・権限設定を確認
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings
+```
+
+---
+
+### 2-2. Team 作成（推奨）
+- [ ] 部署・プロジェクト単位で Team を作成
+
+**URL**
+```
+https://github.com/orgs/{ORG_NAME}/teams
+```
+
+---
+
+## 3. GitHub Copilot プラン確認
+- [ ] Copilot Business / Enterprise を選択
+
+**URL**
+https://github.com/features/copilot
+
+**参考**
+- Copilot Business: $19 / user / month
+- Copilot Enterprise: Enterprise Cloud 契約が必要
+
+---
+
+## 4. Copilot を Organization で有効化
+- [ ] Copilot 設定画面を開く
+- [ ] Copilot を有効化
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/copilot
+```
+
+---
+
+## 5. Copilot 利用ユーザーの割り当て
+- [ ] ユーザーまたは Team を指定
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/copilot/access
+```
+
+---
+
+## 6. Billing（支払い設定）
+- [ ] 支払い方法を設定
+- [ ] 課金対象ユーザー数を確認
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/billing
+```
+
+---
+
+## 7. Copilot ポリシー設定（重要）
+- [ ] Copilot 利用ポリシーを設定
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/copilot/policies
+```
+
+**推奨設定**
+- Copilot によるコード学習利用：OFF
+
+---
+
+## 8. リポジトリ単位の制御（任意）
+- [ ] Copilot 利用対象リポジトリを指定
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/copilot/repositories
+```
+
+---
+
+## 9. 開発者側セットアップ
+- [ ] エディタに Copilot をインストール
+- [ ] GitHub アカウントでサインイン
+
+**VS Code**
+https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
+
+**IntelliJ**
+https://plugins.jetbrains.com/plugin/17718-github-copilot
+
+---
+
+## 10. 利用状況の確認・運用
+- [ ] 利用中ユーザーを定期確認
+- [ ] 不要ユーザーの割り当て解除
+
+**URL**
+```
+https://github.com/organizations/{ORG_NAME}/settings/copilot
+```
+
+---
+
+## 11. 社内ガイドライン整備（推奨）
+- [ ] 機密情報入力禁止を明記
+- [ ] コードレビュー責任は人間が負うことを明示
+- [ ] OSS ライセンス確認ルールを定義
+
+---
+
+## 補足
+- Owner は最低 2 名設定推奨
+- Team 単位での Copilot 管理が最も運用しやすい
+- 小規模 PoC → 全社展開が推奨
+
+---
+
+</textarea>
+</body>
 
 </html>

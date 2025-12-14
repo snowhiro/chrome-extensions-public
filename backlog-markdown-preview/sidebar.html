@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Markdown プレビュー</title>
-  <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="css/sidebar.css">
 </head>
 <body>
   <div id="sidebar-container">
     <div id="toolbar">
-      <button id="reload-button" title="プレビューをリロード">🔄 リロード</button>
+      <button id="getHTML">Markdownを取得</button> 
     </div>
     <div id="preview-content">
-      <p id="loading-message">Markdownを読み込み中...</p>
     </div>
   </div>
-  <script src="sidebar.js"></script>
+  <script src="js/sidebar.js"></script>
+  <script src="js/marked.umd.js"></script>
 </body>
 </html>
