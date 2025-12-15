@@ -47,7 +47,22 @@ const regulationDateList = [
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     setTodayAsDefault();
+    
+    // 最初のアコーディオン（入力エリア）を展開
+    const firstAccordion = document.querySelector('.accordion-item');
+    if (firstAccordion) {
+        firstAccordion.classList.add('active');
+    }
 });
+
+// アコーディオンの開閉機能
+function toggleAccordion(event) {
+    const button = event.currentTarget;
+    const accordionItem = button.parentElement;
+    
+    // クリックされたアコーディオンの開閉状態を切り替え
+    accordionItem.classList.toggle('active');
+}
 
 // イベントリスナーの設定
 function setupEventListeners() {

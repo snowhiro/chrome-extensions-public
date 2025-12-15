@@ -17,29 +17,45 @@
             </div>
         </div>
 
-    <div class="table-section">
-        <h2>締切日一覧</h2>
-        <table id="list-table">
-            <thead>
-                <tr>
-                    <th>優先度/規模</th>
-                    <th>大</th>
-                    <th>中</th>
-                    <th>小</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- 動的に生成されます -->
-            </tbody>
-        </table>
-    </div>
-
-    <div class="calendar-section">
-        <h2>カレンダー</h2>
-        <div id="calendarContainer" class="calendar-container">
-            <!-- 動的に生成されます -->
+        <!-- アコーディオン2: 締切日一覧 -->
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(event)">
+                <span class="accordion-title">締切日一覧</span>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="table-section">
+                    <table id="list-table">
+                        <thead>
+                            <tr>
+                                <th>優先度/規模</th>
+                                <th>大</th>
+                                <th>中</th>
+                                <th>小</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- 動的に生成されます -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- アコーディオン3: カレンダー -->
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="toggleAccordion(event)">
+                <span class="accordion-title">カレンダー</span>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="calendar-section">
+                    <div id="calendarContainer" class="calendar-container">
+                        <!-- 動的に生成されます -->
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- 日付情報モーダル -->
     <div id="dateModal" class="modal" style="display: none;">
