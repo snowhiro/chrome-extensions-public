@@ -17,6 +17,8 @@ let allTodos = [];
 let currentSort = 'order';
 let hideCompleted = true;
 let currentDetailTodo = null;
+let draggedElement = null;
+let draggedIndex = null;
 
 // 初期設定
 settingsHideCompleted.checked = hideCompleted;
@@ -201,6 +203,8 @@ todoForm.addEventListener('submit', (e) => {
 function renderTodoCard(todo) {
     const card = document.createElement('div');
     card.className = 'todo-card';
+    card.draggable = true;
+    card.dataset.todoId = todo.id;
     
     const date = new Date(todo.createdAt);
     const formattedDate = date.toLocaleDateString('ja-JP', { 
@@ -212,6 +216,7 @@ function renderTodoCard(todo) {
 
     card.innerHTML = `
         <div class="todo-header">
+            <span class="drag-handle">⋮⋮</span>
             <div class="todo-title">${escapeHtml(todo.title)}</div>
             <div class="todo-priority priority-${todo.priority}">${todo.priority}</div>
         </div>
@@ -225,7 +230,7 @@ function renderTodoCard(todo) {
     `;
 
     card.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('todo-complete-btn')) {
+        if (!e.target.classList.contains('todo-complete-btn') && !e.target.classList.contains('drag-handle')) {
             showDetail(todo);
         }
     });
@@ -235,6 +240,14 @@ function renderTodoCard(todo) {
         e.stopPropagation();
         markAsComplete(todo);
     });
+
+    // ドラッグイベント
+    card.addEventListener('dragstart', handleDragStart);
+    card.addEventListener('dragend', handleDragEnd);
+    card.addEventListener('dragover', handleDragOver);
+    card.addEventListener('drop', handleDrop);
+    card.addEventListener('dragenter', handleDragEnter);
+    card.addEventListener('dragleave', handleDragLeave);
 
     todoContainer.appendChild(card);
 }
@@ -322,6 +335,89 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// ドラッグ&ドロップハンドラー
+function handleDragStart(e) {
+    draggedElement = this;
+    draggedIndex = Array.from(todoContainer.children).indexOf(this);
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+    this.classList.add('dragging');
+}
+
+function handleDragEnd(e) {
+    this.classList.remove('dragging');
+    document.querySelectorAll('.todo-card').forEach(card => {
+        card.classList.remove('drag-over');
+    });
+    draggedElement = null;
+    draggedIndex = null;
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+function handleDragEnter(e) {
+    if (this !== draggedElement && this.classList.contains('todo-card')) {
+        this.classList.add('drag-over');
+    }
+}
+
+function handleDragLeave(e) {
+    if (e.target === this) {
+        this.classList.remove('drag-over');
+    }
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (this !== draggedElement && this.classList.contains('todo-card')) {
+        const newIndex = Array.from(todoContainer.children).indexOf(this);
+        const draggedTodoId = parseInt(draggedElement.dataset.todoId);
+        
+        // 表示順でソート中であることを確認
+        if (currentSort !== 'order') {
+            alert('「表示順」ソートの時のみドラッグ&ドロップで並び替え可能です');
+            return;
+        }
+        
+        // 実際のallTodosの配列内で並び替え
+        const draggedTodo = allTodos.find(t => t.id === draggedTodoId);
+        if (!draggedTodo) return;
+        
+        const draggedAllIndex = allTodos.findIndex(t => t.id === draggedTodoId);
+        allTodos.splice(draggedAllIndex, 1);
+        
+        // ドロップ先のTODOを見つける
+        let insertIndex = 0;
+        const dropTargetId = parseInt(this.dataset.todoId);
+        const dropTargetIndex = allTodos.findIndex(t => t.id === dropTargetId);
+        
+        if (newIndex < draggedIndex) {
+            insertIndex = dropTargetIndex;
+        } else {
+            insertIndex = dropTargetIndex + 1;
+        }
+        
+        allTodos.splice(insertIndex, 0, draggedTodo);
+        
+        // order属性を再割り当て
+        allTodos.forEach((todo, index) => {
+            todo.order = index + 1;
+        });
+        
+        saveTodosToStorage(allTodos);
+        refreshDisplay();
+    }
+    
+    this.classList.remove('drag-over');
+    return false;
 }
 
 // ウィンドウリサイズ時に自動調整
