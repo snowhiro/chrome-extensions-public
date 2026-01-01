@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 0;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin: 0;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .menu-container {
+      padding: 20px;
+    }
+    .menu-btn {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0;
+      background-color: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .menu-btn:hover {
+      background-color: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .menu-btn.active {
+      background-color: #667eea;
+      color: white;
+    }
+    .icon {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📊 WBS管理ツール</h1>
+  </div>
+  <div class="menu-container">
+    <button class="menu-btn" id="dashboardBtn">
+      <span class="icon">📈</span>ダッシュボード
+    </button>
+    <button class="menu-btn" id="membersBtn">
+      <span class="icon">👥</span>メンバー管理
+    </button>
+    <button class="menu-btn" id="tasksBtn">
+      <span class="icon">✅</span>タスク管理
+    </button>
+    <button class="menu-btn" id="wbsBtn">
+      <span class="icon">📋</span>WBS管理
+    </button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
